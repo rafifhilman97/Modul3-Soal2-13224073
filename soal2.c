@@ -4,9 +4,40 @@
 // NIM        : 13224073
 // Nomor Soal : 2
 
+// Case 7 harusnya 42
+
 #include <stdio.h>
 
-int NilaiFPB(int ukuranA, int ukuranB){ //
+void tuangAir(int ukuranA, int ukuranB, int *gelasA, int *gelasB, int *langkah){
+    if(ukuranA < ukuranB){
+        *gelasB = *gelasB + *gelasA;
+        if(*gelasB > ukuranB){
+            int sisa = *gelasB - ukuranB; 
+            *gelasB = ukuranB;
+            *gelasA = sisa;
+        }
+        else{
+            *gelasA = 0;            
+        }
+    }
+    else if (ukuranA > ukuranB){
+        *gelasB = ukuranB;
+        *gelasA = *gelasA - ukuranB;
+    }
+    *langkah++;
+}
+
+void isiAir(int *A, int ukuran, int *langkah){
+    *A = ukuran;
+    *langkah++;
+}
+
+void buangAir(int *A, int *langkah){
+    *A = 0;
+    *langkah++;
+}
+
+int NilaiFPB(int ukuranA, int ukuranB){ // [1]
     int sisa = ukuranA % ukuranB;
     while ((sisa) != 0){
         ukuranA = ukuranB;
@@ -18,8 +49,8 @@ int NilaiFPB(int ukuranA, int ukuranB){ //
 
 int langkahMinimum(int ukuranA, int ukuranB, int takaran){
     int langkah = 0;
-    //int gelasA = ukuranA;
-    //int gelasB = ukuranB;
+    int gelasA = ukuranA;
+    int gelasB = ukuranB;
     int FPB = NilaiFPB(ukuranA, ukuranB);
     
     if (ukuranA == takaran || ukuranB == takaran){
@@ -34,20 +65,21 @@ int langkahMinimum(int ukuranA, int ukuranB, int takaran){
         langkah = -1;
         return langkah;
     }
-    else if(takaran % FPB != 0){
+    else if(takaran % FPB != 0){ 
         langkah = -1;
         return langkah;
     }
-/*
-    while (gelasA != takaran || gelasB != takaran){
-        if (gelasA > gelasB){
-
+    else {
+        /*
+        int langkah1 = 0;
+        int langkah2 = 0;
+        while (gelasA != takaran || gelasB != takaran){
+            isiAir(&gelasA, ukuranA, &langkah1);
+            tuangAir(ukuranA, ukuranB, &gelasA, &gelasB, &langkah);
         }
-        else if (gelasB > gelasA){
-
-        }
+        */
     }
-*/
+
     return langkah;
 }
 
