@@ -57,7 +57,7 @@ int main(void){
     int takaran;
     scanf("%d %d %d", &gelasA, &gelasB, &takaran);
 
-    printf("%d\n", langkahMinimum(gelasA, gelasB, takaran));
+    printf("%d", langkahMinimum(gelasA, gelasB, takaran));
 
     return 0;
 }
