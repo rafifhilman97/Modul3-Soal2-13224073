@@ -18,8 +18,8 @@ int NilaiFPB(int ukuranA, int ukuranB){ //
 
 int langkahMinimum(int ukuranA, int ukuranB, int takaran){
     int langkah = 0;
-    int gelasA = ukuranA;
-    int gelasB = ukuranB;
+    //int gelasA = ukuranA;
+    //int gelasB = ukuranB;
     int FPB = NilaiFPB(ukuranA, ukuranB);
     
     if (ukuranA == takaran || ukuranB == takaran){
